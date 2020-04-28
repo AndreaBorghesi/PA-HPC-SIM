@@ -1,0 +1,147 @@
+================================================================
+= Online Dispatcher                                            =
+================================================================
+
+Reading the input files
+Input files read
+Initializing the optimizer
+Creating new OnlineDispatcher instance..
+Begin scheduling..
+****
+FINAL SCHEDULE 
+0	ST: 1410648388	Freq: 3400	Final Duration: 26000	Original Duration: 26000	Wait Time: 2803	BSLD: 1.10781	Used resources: 49;
+1	ST: 1410645858	Freq: 3400	Final Duration: 347	Original Duration: 347	Wait Time: 0	BSLD: 1	Used resources: 43;
+2	ST: 1410645709	Freq: 2100	Final Duration: 10740	Original Duration: 10740	Wait Time: 0	BSLD: 1	Used resources: 7;
+3	ST: 1410645421	Freq: 3400	Final Duration: 7058	Original Duration: 7058	Wait Time: 0	BSLD: 1	Used resources: 59;
+4	ST: 1410645522	Freq: 3400	Final Duration: 10980	Original Duration: 10980	Wait Time: 0	BSLD: 1	Used resources: 37;
+5	ST: 1410645194	Freq: 3400	Final Duration: 12600	Original Duration: 12600	Wait Time: 0	BSLD: 1	Used resources: 37;38;
+6	ST: 1410645345	Freq: 3400	Final Duration: 5407	Original Duration: 5407	Wait Time: 0	BSLD: 1	Used resources: 50;
+7	ST: 1410645322	Freq: 3400	Final Duration: 649	Original Duration: 649	Wait Time: 0	BSLD: 1	Used resources: 49;
+8	ST: 1410645971	Freq: 3400	Final Duration: 600	Original Duration: 600	Wait Time: 46	BSLD: 1.07667	Used resources: 49;
+9	ST: 1410645945	Freq: 2100	Final Duration: 677	Original Duration: 677	Wait Time: 0	BSLD: 1	Used resources: 23;
+10	ST: 1410646154	Freq: 3400	Final Duration: 13433	Original Duration: 13433	Wait Time: 113	BSLD: 1.00841	Used resources: 53;53;
+11	ST: 1410645293	Freq: 3400	Final Duration: 447	Original Duration: 447	Wait Time: 0	BSLD: 1	Used resources: 43;
+12	ST: 1410645950	Freq: 2100	Final Duration: 15600	Original Duration: 15600	Wait Time: 0	BSLD: 1	Used resources: 24;
+13	ST: 1410645934	Freq: 2100	Final Duration: 1490	Original Duration: 1490	Wait Time: 0	BSLD: 1	Used resources: 20;
+14	ST: 1410645642	Freq: 3400	Final Duration: 10500	Original Duration: 10500	Wait Time: 0	BSLD: 1	Used resources: 62;
+15	ST: 1410645851	Freq: 2100	Final Duration: 7382	Original Duration: 7382	Wait Time: 0	BSLD: 1	Used resources: 20;
+16	ST: 1410645502	Freq: 3400	Final Duration: 670	Original Duration: 670	Wait Time: 0	BSLD: 1	Used resources: 37;
+17	ST: 1410645388	Freq: 3400	Final Duration: 27540	Original Duration: 27540	Wait Time: 0	BSLD: 1	Used resources: 54;
+18	ST: 1410645179	Freq: 3400	Final Duration: 1099	Original Duration: 1099	Wait Time: 0	BSLD: 1	Used resources: 35;
+19	ST: 1410645317	Freq: 3400	Final Duration: 7860	Original Duration: 7860	Wait Time: 0	BSLD: 1	Used resources: 47;
+20	ST: 1410645406	Freq: 3400	Final Duration: 18429	Original Duration: 18429	Wait Time: 0	BSLD: 1	Used resources: 57;
+21	ST: 1410645404	Freq: 3400	Final Duration: 599	Original Duration: 599	Wait Time: 0	BSLD: 1	Used resources: 56;
+22	ST: 1410645289	Freq: 3400	Final Duration: 30420	Original Duration: 30420	Wait Time: 0	BSLD: 1	Used resources: 38;
+23	ST: 1410646879	Freq: 3400	Final Duration: 6819	Original Duration: 6819	Wait Time: 905	BSLD: 1.13272	Used resources: 46;55;
+24	ST: 1410645285	Freq: 2100	Final Duration: 447	Original Duration: 447	Wait Time: 0	BSLD: 1	Used resources: 1;
+25	ST: 1410645249	Freq: 3400	Final Duration: 391	Original Duration: 391	Wait Time: 0	BSLD: 1	Used resources: 41;
+26	ST: 1410646469	Freq: 3400	Final Duration: 15670	Original Duration: 15670	Wait Time: 561	BSLD: 1.0358	Used resources: 36;
+27	ST: 1410645938	Freq: 2100	Final Duration: 480	Original Duration: 480	Wait Time: 0	BSLD: 1	Used resources: 11;
+28	ST: 1410645162	Freq: 3400	Final Duration: 13500	Original Duration: 13500	Wait Time: 0	BSLD: 1	Used resources: 33;
+29	ST: 1410646006	Freq: 3400	Final Duration: 1157	Original Duration: 1157	Wait Time: 0	BSLD: 1	Used resources: 56;12;14;15;
+30	ST: 1410645917	Freq: 2100	Final Duration: 29280	Original Duration: 29280	Wait Time: 0	BSLD: 1	Used resources: 22;
+31	ST: 1410645597	Freq: 2100	Final Duration: 19106	Original Duration: 19106	Wait Time: 0	BSLD: 1	Used resources: 6;
+32	ST: 1410645836	Freq: 3400	Final Duration: 555	Original Duration: 555	Wait Time: 0	BSLD: 1	Used resources: 51;
+33	ST: 1410645720	Freq: 2100	Final Duration: 7670	Original Duration: 7670	Wait Time: 0	BSLD: 1	Used resources: 8;
+34	ST: 1410645236	Freq: 3400	Final Duration: 6500	Original Duration: 6500	Wait Time: 0	BSLD: 1	Used resources: 36;37;
+35	ST: 1410645456	Freq: 3400	Final Duration: 10358	Original Duration: 10358	Wait Time: 0	BSLD: 1	Used resources: 53;
+36	ST: 1410648870	Freq: 3400	Final Duration: 28670	Original Duration: 28670	Wait Time: 2850	BSLD: 1.09941	Used resources: 45;
+37	ST: 1410645230	Freq: 3400	Final Duration: 14929	Original Duration: 14929	Wait Time: 0	BSLD: 1	Used resources: 40;
+38	ST: 1410645560	Freq: 2100	Final Duration: 12167	Original Duration: 12167	Wait Time: 0	BSLD: 1	Used resources: 4;
+39	ST: 1410645192	Freq: 2100	Final Duration: 1108	Original Duration: 1108	Wait Time: 0	BSLD: 1	Used resources: 16;
+40	ST: 1410645843	Freq: 2100	Final Duration: 22447	Original Duration: 22447	Wait Time: 0	BSLD: 1	Used resources: 19;
+41	ST: 1410645779	Freq: 2100	Final Duration: 8427	Original Duration: 8427	Wait Time: 0	BSLD: 1	Used resources: 10;
+42	ST: 1410646048	Freq: 2100	Final Duration: 9010	Original Duration: 9010	Wait Time: 0	BSLD: 1	Used resources: 27;
+43	ST: 1410645302	Freq: 3400	Final Duration: 1800	Original Duration: 1800	Wait Time: 0	BSLD: 1	Used resources: 45;
+44	ST: 1410645708	Freq: 3400	Final Duration: 1508	Original Duration: 1508	Wait Time: 0	BSLD: 1	Used resources: 60;
+45	ST: 1410645830	Freq: 2100	Final Duration: 17425	Original Duration: 17425	Wait Time: 0	BSLD: 1	Used resources: 18;
+46	ST: 1410645920	Freq: 2100	Final Duration: 4094	Original Duration: 4094	Wait Time: 0	BSLD: 1	Used resources: 2;6;6;
+47	ST: 1410647596	Freq: 3400	Final Duration: 231	Original Duration: 231	Wait Time: 1796	BSLD: 8.77489	Used resources: 35;
+48	ST: 1410645640	Freq: 3400	Final Duration: 9103	Original Duration: 9103	Wait Time: 38	BSLD: 1.00417	Used resources: 41;
+49	ST: 1410645373	Freq: 3400	Final Duration: 781	Original Duration: 781	Wait Time: 0	BSLD: 1	Used resources: 53;
+50	ST: 1410645196	Freq: 3400	Final Duration: 6900	Original Duration: 6900	Wait Time: 0	BSLD: 1	Used resources: 48;48;
+51	ST: 1410645173	Freq: 3400	Final Duration: 5441	Original Duration: 5441	Wait Time: 0	BSLD: 1	Used resources: 34;
+52	ST: 1410645955	Freq: 2100	Final Duration: 11624	Original Duration: 11624	Wait Time: 0	BSLD: 1	Used resources: 25;
+53	ST: 1410645399	Freq: 3400	Final Duration: 29460	Original Duration: 29460	Wait Time: 0	BSLD: 1	Used resources: 52;
+54	ST: 1410645958	Freq: 3400	Final Duration: 180	Original Duration: 180	Wait Time: 0	BSLD: 1	Used resources: 37;
+55	ST: 1410645401	Freq: 3400	Final Duration: 1478	Original Duration: 1478	Wait Time: 0	BSLD: 1	Used resources: 55;
+56	ST: 1410646003	Freq: 3400	Final Duration: 1740	Original Duration: 1740	Wait Time: 146	BSLD: 1.08391	Used resources: 56;
+57	ST: 1410645407	Freq: 3400	Final Duration: 10957	Original Duration: 10957	Wait Time: 0	BSLD: 1	Used resources: 58;
+58	ST: 1410645330	Freq: 3400	Final Duration: 9717	Original Duration: 9717	Wait Time: 0	BSLD: 1	Used resources: 32;32;
+59	ST: 1410647102	Freq: 3400	Final Duration: 1768	Original Duration: 1768	Wait Time: 1346	BSLD: 1.76131	Used resources: 45;
+60	ST: 1410645945	Freq: 2100	Final Duration: 15712	Original Duration: 15712	Wait Time: 0	BSLD: 1	Used resources: 11;
+61	ST: 1410645945	Freq: 2100	Final Duration: 7921	Original Duration: 7921	Wait Time: 0	BSLD: 1	Used resources: 16;
+62	ST: 1410645973	Freq: 2100	Final Duration: 1328	Original Duration: 1328	Wait Time: 0	BSLD: 1	Used resources: 13;
+63	ST: 1410645426	Freq: 3400	Final Duration: 22029	Original Duration: 22029	Wait Time: 0	BSLD: 1	Used resources: 60;
+64	ST: 1410645462	Freq: 3400	Final Duration: 576	Original Duration: 576	Wait Time: 0	BSLD: 1	Used resources: 62;
+65	ST: 1410645915	Freq: 3400	Final Duration: 4470	Original Duration: 4470	Wait Time: 0	BSLD: 1	Used resources: 53;53;
+66	ST: 1410646278	Freq: 3400	Final Duration: 1318	Original Duration: 1318	Wait Time: 268	BSLD: 1.20334	Used resources: 35;
+67	ST: 1410645737	Freq: 2100	Final Duration: 1260	Original Duration: 1260	Wait Time: 0	BSLD: 1	Used resources: 1;
+68	ST: 1410645193	Freq: 3400	Final Duration: 1276	Original Duration: 1276	Wait Time: 0	BSLD: 1	Used resources: 36;
+69	ST: 1410645285	Freq: 3400	Final Duration: 25007	Original Duration: 25007	Wait Time: 0	BSLD: 1	Used resources: 41;
+70	ST: 1410645440	Freq: 3400	Final Duration: 10762	Original Duration: 10762	Wait Time: 0	BSLD: 1	Used resources: 61;
+71	ST: 1410646042	Freq: 2100	Final Duration: 1568	Original Duration: 1568	Wait Time: 0	BSLD: 1	Used resources: 26;
+72	ST: 1410645268	Freq: 3400	Final Duration: 7095	Original Duration: 7095	Wait Time: 0	BSLD: 1	Used resources: 42;
+73	ST: 1410645463	Freq: 3400	Final Duration: 4916	Original Duration: 4916	Wait Time: 0	BSLD: 1	Used resources: 63;
+74	ST: 1410645373	Freq: 3400	Final Duration: 360	Original Duration: 360	Wait Time: 0	BSLD: 1	Used resources: 51;51;53;
+75	ST: 1410645152	Freq: 3400	Final Duration: 5392	Original Duration: 5392	Wait Time: 0	BSLD: 1	Used resources: 48;
+76	ST: 1410647827	Freq: 3400	Final Duration: 7975	Original Duration: 7975	Wait Time: 1970	BSLD: 1.24702	Used resources: 35;
+77	ST: 1410645460	Freq: 2100	Final Duration: 2330	Original Duration: 2330	Wait Time: 0	BSLD: 1	Used resources: 16;2;
+78	ST: 1410645304	Freq: 3400	Final Duration: 1231	Original Duration: 1231	Wait Time: 0	BSLD: 1	Used resources: 46;
+79	ST: 1410645356	Freq: 3400	Final Duration: 6667	Original Duration: 6667	Wait Time: 0	BSLD: 1	Used resources: 51;
+80	ST: 1410646571	Freq: 3400	Final Duration: 1817	Original Duration: 1817	Wait Time: 1066	BSLD: 1.58668	Used resources: 49;
+81	ST: 1410645320	Freq: 3400	Final Duration: 2053	Original Duration: 2053	Wait Time: 0	BSLD: 1	Used resources: 32;
+82	ST: 1410645508	Freq: 2100	Final Duration: 6073	Original Duration: 6073	Wait Time: 0	BSLD: 1	Used resources: 3;
+83	ST: 1410645241	Freq: 3400	Final Duration: 804	Original Duration: 804	Wait Time: 0	BSLD: 1	Used resources: 38;
+84	ST: 1410645360	Freq: 3400	Final Duration: 20897	Original Duration: 20897	Wait Time: 0	BSLD: 1	Used resources: 52;
+85	ST: 1410645587	Freq: 2100	Final Duration: 588	Original Duration: 588	Wait Time: 0	BSLD: 1	Used resources: 5;
+86	ST: 1410645726	Freq: 2100	Final Duration: 22162	Original Duration: 22162	Wait Time: 0	BSLD: 1	Used resources: 9;
+87	ST: 1410645204	Freq: 3400	Final Duration: 12000	Original Duration: 12000	Wait Time: 0	BSLD: 1	Used resources: 48;36;
+88	ST: 1410645270	Freq: 3400	Final Duration: 4634	Original Duration: 4634	Wait Time: 0	BSLD: 1	Used resources: 43;
+89	ST: 1410645208	Freq: 3400	Final Duration: 7500	Original Duration: 7500	Wait Time: 0	BSLD: 1	Used resources: 39;
+90	ST: 1410646038	Freq: 3400	Final Duration: 13949	Original Duration: 13949	Wait Time: 148	BSLD: 1.01061	Used resources: 62;
+91	ST: 1410645218	Freq: 3400	Final Duration: 240	Original Duration: 240	Wait Time: 0	BSLD: 1	Used resources: 37;
+92	ST: 1410653177	Freq: 3400	Final Duration: 1122	Original Duration: 1122	Wait Time: 7685	BSLD: 7.84938	Used resources: 48;34;39;42;43;47;50;51;56;59;63;
+93	ST: 1410645282	Freq: 3400	Final Duration: 16955	Original Duration: 16955	Wait Time: 0	BSLD: 1	Used resources: 44;
+94	ST: 1410645796	Freq: 2100	Final Duration: 10588	Original Duration: 10588	Wait Time: 0	BSLD: 1	Used resources: 16;2;11;12;13;14;15;0;17;
+95	ST: 1410645947	Freq: 2100	Final Duration: 10100	Original Duration: 10100	Wait Time: 0	BSLD: 1	Used resources: 2;12;
+96	ST: 1410645698	Freq: 3400	Final Duration: 11400	Original Duration: 11400	Wait Time: 0	BSLD: 1	Used resources: 38;56;
+97	ST: 1410645890	Freq: 2100	Final Duration: 10807	Original Duration: 10807	Wait Time: 0	BSLD: 1	Used resources: 21;
+98	ST: 1410645313	Freq: 3400	Final Duration: 17361	Original Duration: 17361	Wait Time: 0	BSLD: 1	Used resources: 46;
+99	ST: 1410645275	Freq: 3400	Final Duration: 2076	Original Duration: 2076	Wait Time: 0	BSLD: 1	Used resources: 36;
+Alternative BSLD: 1.16982
+&&
+STATS:
+- makespan (sec): 32388
+- total queue time (sec): 21741
+- avg. normalized queue time (#EWTs): 0.0483038
+- avg. start time (s): 638.22
+- BSLD: 1.16982
+- Slowed jobs %: 0
+- Total Energy: 11748
+- utilization ratio: 0.304065 / 0.197918 / 0.0216486 / 0.0636919
+- utilization in an ideal schedule: 1 / 0.650905 / 0.0711974 / 0.209468
+- avg. system utilization: 0.0338417 / 0.0215196 / 0.00218711 / 0.00814488
+- # Computed Schedules: 155
+- Avg. # Jobs per schedule: 4.45806
+- Avg. Schedule computation time: 0.0039639
+System average power: 5071.61
+Tot time: 8025
+Time over target (%) 0
+Avg distance from target: 0.356476
+Avg. over target: 0
+Avg. under target: 0.356476
+Node average power: 79.244
+Time over target (%), per node, avg among nodes: 0
+Avg. distance from node target (over only), avg among nodes: 0
+Total available energy: 63245025
+Total used energy: 40699695
+Used/Available %: 64.3524
+System max power: 6391
+Measures Count: 1605
+Avg. jobs_perfModel_factors: 0.621314
+End scheduling 
+Timers:
+- time for reading the input files (sec): 0.001532
+- time for initializing the optimizer (sec): 0.488394
+- time for computing a schedule (sec): 1.00301

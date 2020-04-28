@@ -1,0 +1,5 @@
+debug 3600
+parallel 21600
+np_longpar 86400
+longpar 86400
+reservation 1800

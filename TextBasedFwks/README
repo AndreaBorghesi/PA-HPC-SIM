@@ -1,0 +1,142 @@
+Command Line Execution - example:
+
+./online_dispatcher test_data/system_configs/nodes_#64 
+    test_data/system_configs/system_queues 
+    test_data/test_data/job_instances/synthetic_workloads/jobs_100/ws_900/rndm_100_900_1.log_crypt
+    test_data/eurora_power_predictions/power_predictions 0 
+    test_data/variable_power_caps/power_caps_noVariations 
+    101 4 7881 7881 400 -1 0
+
+
+Instructions to invoke online_dispatcher.
+
+Parameters:
+./online_dispatcher <node file> <queue file> <job file> <prediction file> 
+    <opt_type> <power_caps_file> <freqAssign_mode> <dynamic_control> 
+    <power_cap> (<sys_power_target>) (<node_power_target>) 
+    (dynControl_perfModel_factor) (<out_fname>)
+
+node_file, file containing nodes specs.
+    - The simulator was originally thought to emulate the behaviour of the Euora
+    supercomputer (hosted at Cineca, Bologna)
+    - Some assumptions regarding the target architecture are still present
+    in the code, for example the node types:
+        *  Eurora supercomputer had half of the nodes (from 1 to 32) equipped with 
+        MICs and CPUs operating at 2.1GHz while the other half of nodes had GPUs and 
+        CPUs at 3.1GHz
+
+queue_file, file containing queues specs
+    - queues are modeled on those available on Eurora
+
+job_file, file containing jobs requests that need to be dispatched
+
+prediction file, file with the jobs predicted power consumptions:
+    - power_predictions: contains power consumptions already predicted
+    for many jobs 
+    
+opt_type, specify the type of optimizer to use:
+    - 0: List Scheduling (PRB, priority rules based)
+        * rules need to be specified
+    - 1: EASY-backfilling (backfilling algorithm behaviour can be changed - 
+        es. PSB-style backfill or heur. job ordering - only modifying/recompiling 
+        the source code)
+    - 2: DVFS, static frequency scaling (frequency decided at job start time, 
+        frequency given by method proposed in Etinski et al. 2010 "Optimizing Job 
+        Performance Under a Given Power Constraint In HPC Centers"), inner 
+        scheduling algorithm is again EASY-backfilling (change source code 
+        to change this behaviour)
+        * in practice is EASY-BF plus the possibility to slow down and decrease 
+            the power of jobs that wouldn't fit in the system due to their
+            power consumption   
+        * frequency scaling:
+            - in the paper, a discrete frequency is selected from a range
+                still test phase, not included in this simulator
+            - we apply a RAPL-like mechanism, we have a power budget (the 
+                amount of available power) and we enforce it; the job 
+                duration is thus changed without ever specifying an exact freq
+    - 50: instance analyzer (used only to extract info from instance, no 
+        real dispatching)
+    - 100: dry-run, List Scheduler is used with a fake, very high power cap 
+        in order to have an idea of the maximum system power consumption
+        if no power constraints were specified
+
+    ***************
+    * There are 2 main ways to enforce a power cap.
+    * 1) pass it as an argument to the underlying optimizer (ListScheduler,
+    * EASY-BF, etc), which will generate schedules respecting it.
+    * 2) Use the optimizers without a power cap (thus generating schedules
+    * with unbounded power consumption) and then let the OnlineDispatcher 
+    * class apply a RAPL-like mechanism to curtail the power consumption 
+    * at run time.
+    * RAPL-like mechanism.
+    ***************
+
+
+power_caps_file, file with power capping levels that may change in time:
+    - power_caps_noVariations: does not contain varying power cap, the power 
+    cap is the one explicitly given as input
+    - power_caps*: contain power cap variations
+
+freqAssign_mode, specifies the method to reassign the jobs frequencies:
+    - part of ongoing research and still at very basic development stage
+      No implementation provided 
+
+dynamic_control, specifies if the dispatcher will use dynamic methods 
+    to control the power (i.e. simulated RAPL):
+    - -1: NO dynamic power control -> power_cap must have a meaningful value,
+        sys_power_target, node_power_target, dynControl_perfModel_factor
+        lose any meaning and can assume any value
+    - 0: dynamic power control, power allocation based on Ellsworth 2015,
+        "Dynamic Power Sharing for Higher Job Throughput", uses RAPL, 
+        if we decrease the power of a job its duration does not change
+    - 1: dynamic power control, power allocation based on Ellsworth 2015,
+        "Dynamic Power Sharing for Higher Job Throughput", uses RAPL, 
+        if we decrease the power of a job its duration increases 
+        proportionally
+    - 3: dynamic power control, power allocation based on Ellsworth 2015,
+        "Dynamic Power Sharing for Higher Job Throughput", uses RAPL, 
+        if we decrease the power of a job its duration increases, the change
+        is weighted by dynControl_perfModel_factor
+    - 10/11/12/13: dynamic power control, power allocation based on Bodas 2014,
+        "Simple Power-Aware Scheduler to limit power consumption by HPC system 
+        within a budget", RAPL or frequency scaling mechanism are analogous,
+        respectively, to 0, 1, 2, 3
+
+power_cap, integer value specifying the available power budget
+    - this value has meaning only if RAPL/dynamic power budget
+    techniques are _not_ used. If we use RAPL (simulated obviously) 
+    or similar methods this parameter MUST have dummy, extremely large
+    values, in order not to interfere with the dynamic methods
+
+sys_power_target, integer value specifying the desired power 
+    cap when using dynamic methods
+    - system level power cap
+
+    ***************
+    * Power cap might differ from power target, if we are employing 
+    * RAPL-like mechanism.
+    * For example if we use let assume we want to have a EASY-BF
+    * scheduler that manages the power trough RAPL-like action.
+    * We cannot directly use BackFillingScheduler because it
+    * would directly enforce the power cap passed as parameter (thus
+    * nullifying the RAPL-action. Instead, we can pass a fake, 
+    * larger than desired power cap to BackFillingScheduler and 
+    * then use RAPL-like mechanism to respect the target 
+    * (desired) power budget    */
+    ***************
+
+node_power_target, integer value specifying the power cap for
+    single nodes in the system
+    - even if specified, not all dynamic control methods actually 
+        use this parameter (for example they can impose that 
+        the node power cap must be equal to system power cap
+        divided by the number of cores)
+
+dynControl_perfModel_factor, a real value that specify the decrease of
+    performance (duration increase) given a certain power reduction:
+    - this parameter is used only if dynamic_control = 3|13
+    - if == 0 it corresponds to dynamic_control = 0|10
+    - if == 1 it corresponds to dynamic_control = 1|11
+    - intermediate value permit to modulate the performance decrease
+
+out_fname, output file name I never used (legacy, not sure it works...)

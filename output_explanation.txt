@@ -1,0 +1,86 @@
+FINAL SCHEDULE - contains information about when each job started and on which nodes it has executed:
+    - ST -> Start time (in UNIX time)
+    - Freq -> frequency at which it executed (MHz), depends on the type of used nodes
+    - Final Duration -> job actual duration in seconds (job completion time = ST + Final Duration)
+    - Original Duration -> job original duration in seconds; the duration can change, for example due to frequency scaling
+    - Wait time -> time the job has waited before starting its execution (in seconds); wait time = job_submission_time - ST
+    - BSLD -> bounded slowdown = max(1,  (wait_time + final_duration') / max(bsld_threshold,original_duration))
+        * bsld_threshold is a threshold used to exclude jobs with too small durations
+    - Used resources -> list of nodes id indicating the nodes that the job used
+
+Alternative BSLD -> computed as the average of all single BSLDs excluding outliers, i.e. BSLD larger than alternative_bsld_threshold (see OnlineDispatcher.hpp)
+
+makespan (seconds) -> the total length of the schedule (that is, when all the jobs have finished processing), in seconds
+
+total queue time (seconds) -> sum of the time spent in queue by each job
+
+avg. normalized queue time (#EWTs) - sum of the time spent in queue by each job (divided by the expected queue time - each queue has its expected time)
+    - sum_{for_all_job_j} (Wait_time_j / Expected_wait_time_{queue_of_j})
+    - the expected wait time for each queue are specified in test_data/system_configs/system_queues
+
+avg. start time (seconds) -> useless metric: average of all the start times (really, meaningless)
+
+BSLD -> average of all jobs BSLDs, including outliers
+    - values closer to 1 are better, larger values are worse    
+
+Slowed jobs % -> some jobs might be slowed down (frequency scaling) and this is the percentage of slowed down jobs w.r.t. the whole job set
+
+Total Energy -> measure of the overall energy consumption of the system (joule)
+    - rely on the power associated to each job, hence the power predictions as described in test_data/eurora_power_predictions/power_predictions
+    - ******* I'm not sure it's computed correctly *******
+
+utilization ratio -> honestly, I don't remember
+    - something related to the amount of resources used (Core, GPU, MIC, Memory), on average, on the system during the simulation compared to the overall amount of resources available
+utilization in an ideal schedule -> again, I don't remember
+
+avg. system utilization - honestly, I don't remember
+    - this value is _very_ weird, I don't think it means anything anymore..
+
+# Computed Schedules -> number of computed schedules
+
+Avg. # Jobs per schedule -> number of average jobs in a scheduling phases
+
+Avg. Schedule computation time -> average time required to compute a schedule (seconds)
+
+System average power -> as the name says, overall system average power (Watt)
+    - strictly dependent on the predicted power consumptions
+
+Tot time -> time passed from the arrival of the first job until the scheduling (start) of the last job to be started, in seconds
+
+Time over target (%) -> percentage of the time when the system power is over the target power
+
+Avg distance from target -> average distance from power target (computed as target_power - system_power)
+
+Avg. over target -> average distance when the power target is exceeded
+
+Avg. under target -> average distance when the power target is respected
+
+Node average power -> node average power (Watt)
+
+Time over target (%), per node, avg among nodes -> same stuff like whole system but per node
+
+Avg. distance from node target (over only), avg among nodes -> same stuff like whole system but per node
+
+Total available energy - the total energy available in the system (nodes powers - even if not used - times total time), Joule
+
+Total used energy - the total energy used in the system (system real power - only nodes used by at least one job - times total time) 
+    - not sure it is always measured correctly for the whole duration of the simulation
+
+Used/Available % -> ratio between used energy and available one (percentage)
+
+System max power -> max power reached in the system (Watt)
+
+Measures Count -> number of power measurements performed
+    - every time _power_measure_step_fixed (see OnlineDispatcher, in seconds), the power on the system (and on single nodes) is measured
+    - the power measure is based on the predicted job powers
+    - the function measuring the power is measure_power(), OnlineDispatcher
+    - at the beginning of the simulation all power measurement events are created, from the beginning of the simulation (arrival of the first job) until the maximum end duration (sum of all original job durations)
+    - the simulator doesn't necessarily proceeds over _all_ time measurement events: to cut simulation time (when the info are no needed), the simulation can be terminated earlier - for example when all jobs have been scheduled, i.e. not following the system execution after all scheduling decision have been taken (this is the current simulator behaviour)
+        * to change the behaviour see function Dispatch() in OnlineDispatcher.hpp (see code between lines 1800 and 1832
+    - the point at which we stop the simulation influences other output parameters, such as energy-related measures of the tot time
+
+time for reading the input files (sec) -> pretty self explanatory
+
+time for initializing the optimizer (sec) -> pretty self explanatory
+
+time for computing a schedule (sec) -> sum of all the times needed to perform the scheduling phase 

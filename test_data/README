@@ -1,0 +1,57 @@
+/system_configs: contains the text-file to configure the target system
+    - nodes_#x: specify the nodes composing the system (x is the number of nodes).
+      Modeled on Eurora supercomputer resources where we have: cores, GPUs, MICs 
+      and memory. Nodes can be also 'reserved', i.e. dedicated to reservation 
+      jobs.
+      File format: node_id, # Cores, # GPUs, # MICs, Memory (bytes), Reserved (0/1)
+    - system_queues: again modeled on Eurora, where jobs can be submitted to 
+      different queues with different priorities. Each queue accepts has a maximum 
+      waiting time for its job (expressed in seconds): lower values correspond
+      to higher priority
+
+/job_instances: contains the instances with the jobs that need to be executed.
+    - /historical_traces is composed by historical traces of jobs that actually
+      run on Eurora (Eurora has been a prototype machine for many months 
+      therefore the historical traces can be a bit weird - i.e. very short 
+      durations..). 
+      The name of the folder indicates the number of jobs in the instance
+    - /synthetic_workloads: synthetic traces generated following the historical
+      distributions in term of resources requested by jobs but typically 
+      increasing job demands (i.e. longer durations, higher job arrival 
+      frequency..).
+      /jobs_x stands for instances of size _x_, each subdirectory (ws_y) has
+      a different time window: the jobs arrival times are enclosed in a time window
+      of size _y_ seconds.
+    - job request format (probably weird but legacy), all in one line - also, there
+      are no spaces, I've added them here for higher readability:
+        job_id; executable_name; user_name; queue; arrival time (it's a date time) 
+        __ used node id; # cores used on specified node; # GPUs; # MICs;
+           memory used# (optionally other nodes) __
+        start time (it's a date time); end time (it's a date time); # requested nodes; 
+        # requested cores; memory requested; user estimated duration; NA; NA; 
+        final status; application type
+    - user names and executable names are hidden ('yyy' and 'xxx)
+    - fields between '__' tells on which nodes the job has actually executed
+        * there could be multiple nodes, separated by '#'
+    - the 3rd and 4th last fields are useless, always 'NA'
+    - final status is useless as well (always 'COMPLETED')
+    - application type is a fake parameter used for some experiments; we imposed
+      that each job is either "average" ('0'), CPU-bound ('0') or memory-bound('2')
+
+/eurora_power_predictions: contains the predicted power for many jobs which run 
+    on the Eurora system during its life time. Power prediction obtained through 
+    the Machine Learning model we presented at ISC16 (Borghesi et Al.
+    "Predictive Modeling for Job Power Consumption in HPC Systems")
+    These models can be applied only to Eurora, different supercomputers would 
+    require different models (or at least a re-training phase).
+    File format: job_id, power prediction (Watt)
+
+/variable_power_caps: the dispatcher can support a varying power caps; they can
+    be specified in a text file. Each line in the file specifies the power cap
+    at time _t_. Time _t_ is measured as an offset in seconds with respect
+    to the _origin_ of time, i.e. the first time point processed
+    - in the current simulator the origin of time is represented by the 
+    moment when the first job in the instance arrives 
+    File format: time (offset in seconds); power cap (Watt)
+
+
